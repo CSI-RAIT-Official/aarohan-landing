@@ -15,7 +15,7 @@ const AboutSection = () => {
           className="text-center mb-16"
         >
           <h2 className="section-title">
-            About the <span className="gradient-text">Hackathon</span>
+            About <span className="gradient-text">AAROHAN</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             A 24-hour innovation marathon where brilliant minds come together
@@ -38,20 +38,35 @@ const AboutSection = () => {
               </h3>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Code The Future is a premier 24-hour hackathon that brings together 
-                  developers, designers, and innovators from around the world. Whether 
-                  you're a seasoned pro or just starting your coding journey, this is 
-                  your chance to create something amazing.
+                AROHAN
+                1.0
+                national-level 24-hour innovation hackathon is
+                designed to empower students to transform bold ideas into
+                impactful, real-world solutions. The event serves as a
+                dynamic launchpad for young innovators, bringing together
+                creative minds to collaborate, experiment, and solve
+                complex problems using technology.
                 </p>
                 <p>
-                  Over the course of one intense day, teams will ideate, build, and 
-                  present solutions to real-world problems across multiple domains 
-                  including healthcare, sustainability, education, and fintech.
+                Participants are encouraged to challenge conventional
+thinking and address pressing societal and industry-driven
+challenges through structured ideation and hands-on
+implementation.
+
                 </p>
                 <p>
-                  With mentorship from industry experts, cutting-edge resources, and 
-                  a vibrant community of fellow hackers, you'll have everything you 
-                  need to turn your ideas into reality.
+                With a strong focus on social impact, sustainability, and
+scalable innovation, the hackathon goes beyond theoretical
+concepts to promote practical, outcome-driven problemsolving
+                </p>
+                <p>
+                The experience pushes participants to design solutions that
+are not only innovative but also feasible, user-centric, and
+future-ready. By fostering an environment of continuous
+learning, mentorship, and execution under real-world
+constraints, the hackathon inspires teams to build
+meaningful, functional prototypes capable of creating
+lasting impact
                 </p>
               </div>
             </div>

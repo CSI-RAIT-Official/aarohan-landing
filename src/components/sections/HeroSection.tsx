@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, ExternalLink } from "lucide-react";
 import FloatingShapes from "../FloatingShapes";
+import links from "../../utils/links.js";
+const { eventLink } = links;
 
 const HeroSection = () => {
   const { scrollY } = useScroll();
@@ -48,7 +50,7 @@ const HeroSection = () => {
         >
           <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
           <span className="text-primary text-sm font-medium">
-            24 Hour Coding Challenge • March 2024
+            24 Hour Hackathon • March 2026
           </span>
         </motion.div>
 
@@ -59,8 +61,8 @@ const HeroSection = () => {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-bold mb-6 leading-tight"
         >
-          <span className="block">CODE THE</span>
-          <span className="gradient-text neon-text">FUTURE</span>
+          <span className="block">AAROHAN 1.0</span>
+          <span className="gradient-text neon-text">HACKATHON</span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -70,8 +72,8 @@ const HeroSection = () => {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
         >
-          Join 500+ innovators for 24 hours of intense coding, collaboration,
-          and creation. Build solutions that matter.
+          Bringing together creativity, technology, and purpose to solve real-world challenges.
+          Rise with Code. Lead with Innovation
         </motion.p>
 
         {/* CTA Buttons */}
@@ -82,12 +84,13 @@ const HeroSection = () => {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
           <motion.a
-            href="#"
+            href={eventLink}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="btn-primary text-lg px-10 py-4 flex items-center gap-2"
+            target="_blank"
           >
-            Register on Unstop
+            Register
             <ExternalLink className="w-5 h-5" />
           </motion.a>
           <motion.a
