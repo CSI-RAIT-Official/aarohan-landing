@@ -5,42 +5,37 @@ import ThemeCard from "../ThemeCard";
 
 const themes = [
   {
-    icon: "🏥",
-    title: "Healthcare Innovation",
+    icon: "👥",
+    title: "Crowd Management",
     description:
-      "Build solutions that improve patient care, medical diagnostics, or healthcare accessibility using AI and emerging technologies.",
+      "Design intelligent systems to monitor, manage, and optimize crowd flow for safer and more efficient public spaces, events, and transportation hubs.",
   },
   {
-    icon: "🌱",
-    title: "Sustainability & Climate",
+    icon: "🌾",
+    title: "Agriculture",
     description:
-      "Create tech-driven approaches to combat climate change, promote sustainable practices, and protect our environment.",
+      "Build smart agricultural solutions to boost productivity, sustainability, and resource efficiency using data-driven and tech-enabled approaches.",
   },
   {
-    icon: "📚",
-    title: "EdTech Revolution",
+    icon: "🎓",
+    title: "Education",
     description:
-      "Transform education through technology with innovative learning platforms, accessibility tools, and engagement solutions.",
+      "Reimagine learning with innovative tools that enhance accessibility, engagement, and personalized education for students and educators alike.",
   },
   {
-    icon: "💰",
-    title: "FinTech Solutions",
+    icon: "🩺",
+    title: "Healthcare",
     description:
-      "Develop financial technology solutions that promote inclusion, security, and innovation in banking and payments.",
+      "Leverage technology to improve diagnosis, patient care, accessibility, and healthcare delivery through smart, scalable digital solutions.",
   },
   {
-    icon: "🤖",
-    title: "AI & Machine Learning",
+    icon: "🛡️",
+    title: "Cybersecurity",
     description:
-      "Push the boundaries of artificial intelligence with creative applications that solve real-world problems.",
-  },
-  {
-    icon: "🏙️",
-    title: "Smart Cities",
-    description:
-      "Design solutions for urban challenges including transportation, infrastructure, and community engagement.",
+      "Develop secure and resilient digital solutions to protect data, systems, and users from cyber threats, ensuring privacy, trust, and reliability in an increasingly connected world.",
   },
 ];
+
 
 const ThemesSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -68,7 +63,7 @@ const ThemesSection = () => {
           className="text-center mb-16"
         >
           <h2 className="section-title">
-            Hackathon <span className="gradient-text">Themes</span>
+            AAROHAN <span className="gradient-text">Themes</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Choose your challenge. Each theme presents unique opportunities to

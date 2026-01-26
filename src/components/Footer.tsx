@@ -32,7 +32,7 @@ const Footer = () => {
               className="font-heading text-2xl font-bold gradient-text inline-block mb-4"
               whileHover={{ scale: 1.05 }}
             >
-              HACKATHON
+              AAROHAN
             </motion.a>
             <p className="text-muted-foreground text-sm max-w-xs">
               Code The Future - Where innovation meets collaboration. Join us
@@ -74,7 +74,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border/30 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground text-sm text-center sm:text-left">
-            © {currentYear} Code The Future. All rights reserved.
+            © {currentYear} AAROHAN. All rights reserved.
           </p>
           <p className="text-muted-foreground text-sm flex items-center gap-1">
             Made with <Heart className="w-4 h-4 text-primary fill-primary" /> by
