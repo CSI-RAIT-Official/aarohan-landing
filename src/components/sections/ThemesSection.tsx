@@ -47,19 +47,15 @@ const ThemesSection = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-left mb-20" // Align left to match the image style
-        >
-          {/* Headline UI Matching the Image */}
-
-
- <h2 className="section-title">
-            Aarohan 1.0 <span className="gradient-text">THEMES</span>
-          </h2>
-          {/* Subtle underline to anchor the section */}
-          <div className="h-2 w-32 bg-[#00E5D1] mt-6" />
-        </motion.div>
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  className="flex flex-col items-center text-center mb-20" 
+>
+  <h2 className="section-title text-4xl md:text-5xl font-bold">
+    Aarohan 1.0 <span className="gradient-text">THEMES</span>
+  </h2>
+  
+</motion.div>
 
         {/* Flex container prevents overlapping by distributing space */}
         <div className="flex flex-col md:flex-row gap-4 min-h-[500px] w-full items-stretch">
