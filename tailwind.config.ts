@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        heading: ["Oswald", "sans-serif"],
+        body: ["Montserrat", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,6 +61,10 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        neon: {
+          primary: "hsl(var(--neon-primary))",
+          secondary: "hsl(var(--neon-secondary))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -65,25 +73,55 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
+        glow: {
+          "0%, 100%": { opacity: "0.4" },
+          "50%": { opacity: "1" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-20px)" },
+        },
+        "spin-slow": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        "pulse-neon": {
+          "0%, 100%": {
+            boxShadow: "0 0 20px hsla(182, 100%, 25%, 0.4), 0 0 40px hsla(182, 100%, 25%, 0.2)",
           },
-          to: {
-            height: "0",
+          "50%": {
+            boxShadow: "0 0 30px hsla(182, 100%, 25%, 0.6), 0 0 60px hsla(182, 100%, 25%, 0.3)",
           },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        shimmer: "shimmer 2s linear infinite",
+        glow: "glow 2s ease-in-out infinite",
+        float: "float 6s ease-in-out infinite",
+        "spin-slow": "spin-slow 20s linear infinite",
+        "pulse-neon": "pulse-neon 2s ease-in-out infinite",
+      },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-mesh": `
+          radial-gradient(at 40% 20%, hsla(182, 100%, 25%, 0.3) 0px, transparent 50%),
+          radial-gradient(at 80% 0%, hsla(168, 100%, 28%, 0.2) 0px, transparent 50%),
+          radial-gradient(at 0% 50%, hsla(182, 100%, 25%, 0.2) 0px, transparent 50%)
+        `,
       },
     },
   },
