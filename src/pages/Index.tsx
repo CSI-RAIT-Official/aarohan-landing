@@ -13,15 +13,15 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
 import WhyJoinSection from "@/components/sections/WhyJoinSection";
-import ThemesSection from "@/components/sections/ThemesSection";
 import TimelineSection from "@/components/sections/TimelineSection";
 import FAQSection from "@/components/sections/FAQSection";
-import SponsorsSection from "@/components/sections/SponsorsSection";
-import TeamSection from "@/components/sections/TeamSection";
-import VenueSection from "@/components/sections/VenueSection";
-import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/Footer";
 import RegistrationDeadline from "@/components/sections/RegistrationDeadline";
+//import VenueSection from "@/components/sections/VenueSection";
+//import ContactSection from "@/components/sections/ContactSection";
+// import ThemesSection from "@/components/sections/ThemesSection";
+// import SponsorsSection from "@/components/sections/SponsorsSection";
+// import TeamSection from "@/components/sections/TeamSection";
 
 const Index = () => {
   return (
@@ -33,14 +33,15 @@ const Index = () => {
         <AboutSection />
         <RegistrationDeadline />
         <WhyJoinSection />
-        {/* <ThemesSection /> */}
         <TimelineSection />
-       
         <FAQSection />
+
+        {/* <VenueSection /> */}
+        {/* <ThemesSection /> */}
+       
         {/* <SponsorsSection /> */}
         {/* <TeamSection /> */}
-        <VenueSection />
-        <ContactSection />
+        {/* <ContactSection /> */}
       </main>
       <Footer />
     </div>

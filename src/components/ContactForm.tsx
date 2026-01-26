@@ -8,10 +8,10 @@ const organizers = [
     initials: "CS",
   },
   {
-    name: "Riddhi Bhanushali",
-    email: "bhanushaliriddhiwork@gmail.com",
-    phone: "+919321633103",
-    initials: "RB",
+    name: "Fardeen Desai",
+    email: "far.des.rt23@dypatil.edu",
+    phone: "+919372794144",
+    initials: "FD",
   },
   {
     name: "Rachana Bera",
