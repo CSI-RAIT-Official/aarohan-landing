@@ -1,129 +1,117 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import ThemeCard from "../ThemeCard"; // Assuming this handles the styling
-
+import { motion } from "framer-motion";
 
 const themes = [
   {
     icon: "👥",
     title: "Crowd Management",
-    description:
-      "Transform the way we inhabit and navigate shared environments. Your mission is to create harmony in movement, ensuring that public squares, transit terminals, and massive cultural gatherings remain safe and fluid. By understanding the pulse of human motion, you will design systems that anticipate congestion and protect the well-being of every individual in the crowd.",
+    tag: "Social Safety",
+    description: "Transform the way we navigate shared environments. Create harmony in movement for public squares and transit terminals.",
   },
   {
     icon: "🌾",
     title: "Agriculture",
-    description:
-      "Bridge the gap between traditional wisdom and the urgent demands of global food security. Focus on empowering the hands that feed the world by optimizing every drop of water and every acre of land. Your goal is to build a sustainable cycle where productivity thrives without exhausting our natural resources, ensuring a resilient future for our food systems.",
+    tag: "Sustainability",
+    description: "Bridge traditional wisdom with food security. Optimize resources to build a sustainable cycle for productivity.",
   },
   {
     icon: "🎓",
     title: "Education",
-    description:
-      "Democratize the pursuit of knowledge by building tools that adapt to the learner, rather than forcing the learner to adapt to the system. You are tasked with creating pathways that make quality instruction accessible to every corner of the globe, fostering curiosity and ensuring that talent is never limited by geography, physical ability, or economic status.",
+    tag: "Accessibility",
+    description: "Democratize knowledge with adaptive tools. Ensure talent is never limited by geography or status.",
   },
   {
     icon: "🩺",
     title: "Healthcare",
-    description:
-      "Redefine the boundaries of modern medicine by shifting the focus from reactive treatment to proactive wellness. Design solutions that bring high-quality care to the doorstep of those who need it most, streamlining the journey from diagnosis to recovery. Your challenge is to make health systems more human-centric, equitable, and capable of saving lives at scale.",
+    tag: "Wellness",
+    description: "Shift from reactive treatment to proactive wellness. Design human-centric solutions that save lives at scale.",
   },
   {
     icon: "🛡️",
     title: "Cybersecurity",
-    description:
-      "Establish a foundation of absolute trust in our increasingly digital lives. As our world becomes more connected, the vulnerability of our personal and collective information grows. Your objective is to build invisible shields that protect privacy and maintain the integrity of our global systems, ensuring that the digital future remains a safe space for innovation and expression.",
+    tag: "Digital Trust",
+    description: "Build invisible shields to protect privacy and global systems in our increasingly connected lives.",
   },
 ];
-const ThemesSection = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
 
+const ThemesSection = () => {
   return (
-    <section id="themes" className="py-24 relative bg-black overflow-hidden font-sans">
-      {/* Background Glow */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 blur-[120px] rounded-full" />
-      </div>
+    <section id="themes" className="py-24 relative bg-[#030712] overflow-hidden">
+      {/* Signature Glow Elements */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#008d76]/10 blur-[140px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#008d76]/5 blur-[140px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div 
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  className="flex flex-col items-center text-center mb-20" 
->
-  <h2 className="section-title text-4xl md:text-5xl font-bold">
-    Aarohan 1.0 <span className="gradient-text">THEMES</span>
-  </h2>
-  
-</motion.div>
+        <header className="max-w-3xl mb-16 text-center md:text-left">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-4 uppercase">
+              CHALLENGE <span className="text-[#008d76]">THEMES</span>
+            </h2>
+            <div className="h-1.5 w-24 bg-[#008d76] mb-6 rounded-full hidden md:block" />
+            <p className="text-gray-500 text-lg uppercase tracking-widest font-bold text-sm">
+              Critical domains for <span className="text-white">real-world transformation</span>.
+            </p>
+          </motion.div>
+        </header>
 
-        {/* Flex container prevents overlapping by distributing space */}
-        <div className="flex flex-col md:flex-row gap-4 min-h-[500px] w-full items-stretch">
-          {themes.map((theme, index) => {
-            const isHovered = hoveredIndex === index;
-            const isAnyHovered = hoveredIndex !== null;
-
-            return (
-              <motion.div
-                key={index}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                animate={{
-                  flex: isAnyHovered ? (isHovered ? 3 : 0.8) : 1,
-                  filter: isAnyHovered && !isHovered ? "grayscale(1) opacity(0.4)" : "grayscale(0) opacity(1)",
-                }}
-                transition={{ type: "spring", stiffness: 200, damping: 25 }}
-                className="relative cursor-pointer overflow-hidden rounded-3xl"
-              >
-                <div className={`h-full p-8 border border-white/10 glass-card flex flex-col justify-between transition-all duration-500 ${isHovered ? 'bg-[#00E5D1]/10 border-[#00E5D1]/50' : 'bg-white/5'}`}>
-                  <div className="relative z-10">
-                    <span className="text-4xl mb-6 block">{theme.icon}</span>
-                    <h3 className={`text-2xl font-bold mb-4 transition-colors ${isHovered ? 'text-[#00E5D1]' : 'text-white'}`}>
-                      {theme.title}
-                    </h3>
-                    
-                    <motion.p 
-                      initial={{ opacity: 0 }}
-                      animate={{ 
-                        opacity: isHovered ? 1 : 0,
-                      }}
-                      className={`text-sm text-gray-300 leading-relaxed ${!isHovered && 'hidden'}`}
-                    >
-                      {theme.description}
-                    </motion.p>
-                  </div>
-
-                  <div className="mt-6 flex items-center justify-between relative z-10">
-                    <span className="text-xs font-mono text-white/30">0{index + 1}</span>
-                    {isHovered && (
-                      <motion.div 
-                        layoutId="arrow"
-                        className="w-10 h-10 rounded-full bg-[#00E5D1] flex items-center justify-center"
-                      >
-                        <div className="w-2.5 h-2.5 border-t-2 border-r-2 border-black rotate-45" />
-                      </motion.div>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {themes.map((theme, index) => (
+            <ThemeCard key={index} theme={theme} index={index} />
+          ))}
+          
+          
         </div>
       </div>
-
-      <style jsx>{`
-        .glass-card {
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-        }
-        /* Using a condensed font weight if available in your project */
-        h2 {
-          font-family: 'Inter Tight', 'Impact', sans-serif;
-        }
-
-        
-      `}</style>
     </section>
+  );
+};
+
+const ThemeCard = ({ theme, index }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+      whileHover={{ y: -8 }}
+      className="group relative h-full"
+    >
+      <div className="h-full backdrop-blur-xl bg-white/5 border border-white/10 rounded-[2rem] p-8 transition-all duration-500 group-hover:bg-white/10 group-hover:border-[#008d76]/50 overflow-hidden shadow-2xl">
+        {/* Glow corner effect */}
+        <div className="absolute -top-12 -right-12 w-32 h-32 bg-[#008d76]/20 blur-[40px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+        
+        <div className="relative z-10 flex flex-col h-full">
+          <div className="flex justify-between items-start mb-12">
+            <span className="text-5xl filter grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+              {theme.icon}
+            </span>
+            <span className="text-[#008d76]/50 font-black text-[10px] tracking-[0.3em] uppercase pt-2">
+              TM // 0{index + 1}
+            </span>
+          </div>
+
+          <div className="mt-auto">
+            <div className="inline-flex items-center gap-2 mb-4">
+               <div className="w-1 h-1 rounded-full bg-[#008d76]" />
+               <span className="text-[#008d76] text-[10px] font-black uppercase tracking-widest">
+                {theme.tag}
+              </span>
+            </div>
+            
+            <h3 className="text-2xl font-black text-white mb-4 group-hover:text-[#008d76] transition-colors tracking-tighter uppercase">
+              {theme.title}
+            </h3>
+            
+            <p className="text-gray-400 text-sm leading-relaxed font-medium">
+              {theme.description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
 };
 

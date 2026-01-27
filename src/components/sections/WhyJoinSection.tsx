@@ -6,92 +6,90 @@ const benefits = [
     icon: Trophy,
     title: "₹50,000",
     subtitle: "PRIZE POOL",
-    description: "Top innovative solutions.",
-    color: "from-yellow-400 to-orange-500",
-    size: "md:col-span-2", // Highlighting the main prize
+    description: "Rewarding the top innovative solutions with significant seed prizes.",
+    size: "md:col-span-2", 
   },
   {
     icon: Briefcase,
     title: "INTERNSHIPS",
     subtitle: "CAREER",
-    description: "Direct visibility to recruiters.",
-    color: "from-rose-400 to-red-500",
+    description: "Direct visibility to top-tier recruiters and industry partners.",
     size: "md:col-span-1",
   },
   {
     icon: GraduationCap,
-    title: "FREE MVP BUILDING WORKSHOP",
-    subtitle: "WORKSHOP",
-    description: "4-hour intensive session.",
-    color: "from-emerald-400 to-teal-500",
+    title: "MVP WORKSHOP",
+    subtitle: "LEARNING",
+    description: "Intensive 4-hour session on building functional prototypes.",
     size: "md:col-span-1",
   },
   {
     icon: ShieldCheck,
     title: "CERTIFICATES",
-    subtitle: "ALL TEAMS",
-    description: "Official participation recognition.",
-    color: "from-blue-400 to-cyan-500",
+    subtitle: "RECOGNITION",
+    description: "Official participation recognition for all active teams.",
     size: "md:col-span-1",
   },
   {
     icon: Award,
     title: "APPRECIATION",
-    subtitle: "SHORTLISTED TEAMS",
-    description: "Exceptional technical innovation.",
-    color: "from-purple-400 to-indigo-500",
+    subtitle: "HONORS",
+    description: "Special mentions for exceptional technical innovation.",
     size: "md:col-span-1",
   },
 ];
 
 const WhyJoinSection = () => {
   return (
-    <section id="why-join" className="py-16 relative overflow-hidden">
-      <div className="container mx-auto px-4 relative z-10">
+    <section id="why-join" className="py-20 bg-[#030712] relative overflow-hidden">
+      {/* Background Accent */}
+      <div className="absolute top-1/2 right-0 w-64 h-64 bg-[#008d76]/5 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-10">
         
-        {/* Main Section Header - Unchanged */}
+        {/* Header - Unified with other sections */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-center mb-10"
+          className="text-center mb-12"
         >
-          <h2 className="section-title !mb-4">
-            Why <span className="gradient-text">Join Us?</span>
+          <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-4 text-white uppercase">
+            WHY <span className="text-[#008d76]">JOIN US?</span>
           </h2>
-          <div className="h-1.5 w-24 bg-gradient-to-r from-primary/50 to-transparent mx-auto rounded-full" />
+          <div className="h-1 w-20 bg-[#008d76] mx-auto rounded-full" />
         </motion.div>
 
-        {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-5xl mx-auto">
           {benefits.map((item, i) => {
             const Icon = item.icon;
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.05 }}
                 viewport={{ once: true }}
-                className={`${item.size} group relative p-6 rounded-2xl glass-card border-white/5 bg-white/[0.01] hover:bg-white/[0.04] transition-all duration-300 overflow-hidden`}
+                className={`${item.size} group relative p-8 rounded-[2rem] backdrop-blur-md bg-white/5 border border-white/10 hover:border-[#008d76]/50 transition-all duration-500 overflow-hidden`}
               >
-                {/* Subtle Background Glow */}
-                <div className={`absolute -right-4 -top-4 w-24 h-24 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-20 blur-2xl transition-opacity`} />
+                {/* Hover Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#008d76]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
-                <div className="relative z-10">
-                  <div className={`inline-flex p-2 rounded-lg bg-gradient-to-br ${item.color} bg-opacity-10 mb-4 group-hover:scale-110 transition-transform`}>
-                    <Icon className="w-5 h-5 text-white" />
+                <div className="relative z-10 h-full flex flex-col">
+                  <div className="w-12 h-12 rounded-2xl bg-[#008d76]/10 border border-[#008d76]/20 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#008d76]/20 transition-all duration-500">
+                    <Icon className="w-6 h-6 text-[#008d76]" />
                   </div>
                   
-                  <p className="text-[10px] font-bold tracking-widest text-primary uppercase opacity-70 mb-1">
+                  <p className="text-[10px] font-black tracking-[0.2em] text-gray-500 uppercase mb-2">
                     {item.subtitle}
                   </p>
                   
-                  <h3 className="text-2xl font-black text-white mb-2 tracking-tight">
+                  <h3 className="text-xl md:text-2xl font-black text-white mb-3 tracking-tight group-hover:text-[#008d76] transition-colors">
                     {item.title}
                   </h3>
                   
-                  <p className="text-gray-400 text-xs leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all">
+                  <p className="text-gray-400 text-sm leading-relaxed">
                     {item.description}
                   </p>
                 </div>

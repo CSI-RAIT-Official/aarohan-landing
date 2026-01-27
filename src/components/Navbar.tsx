@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ExternalLink } from "lucide-react";
+import aarohanLogo from "../assets/csi aarohan logo.png";
 import links from "../utils/links.js";
-import aarohanLogo from "/csi_aarohanlogo-removebg.png"
 
 const navLinks = [
   { name: "About", href: "#about" },
   { name: "Themes", href: "/themes" },
   { name: "Timeline", href: "#timeline" },
   { name: "Team", href: "/team" },
-  {name: "Venue", href: "/contact"},
+  { name: "Venue", href: "/contact" },
   { name: "Contact", href: "/contact" },
 ];
 
-const {eventLink} = links;
+const { eventLink } = links;
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,7 +22,6 @@ const Navbar = () => {
 
   const isHomePage = window.location.pathname === "/";
 
-  /* -------------------- Scroll Spy (Home only) -------------------- */
   useEffect(() => {
     if (!isHomePage) {
       const path = window.location.pathname.replace("/", "");
@@ -31,7 +30,7 @@ const Navbar = () => {
     }
 
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
 
       const sections = navLinks
         .filter((link) => link.href.startsWith("#"))
@@ -51,162 +50,132 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
     handleScroll();
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isHomePage]);
 
-  /* -------------------- Navigation Logic -------------------- */
-  const handleNavigation = (href: string) => {
+  const handleNavigation = (href) => {
     setIsMobileMenuOpen(false);
-
-    // Route navigation
     if (href.startsWith("/")) {
       window.location.href = href;
       return;
     }
-
-    // Section navigation
     if (!isHomePage) {
       window.location.href = `/${href}`;
       return;
     }
-
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
-  /* -------------------- Render -------------------- */
   return (
     <>
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "glass-card py-3" : "bg-transparent py-5"
+        className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ${
+          isScrolled 
+            ? "py-4 bg-[#030712]/80 backdrop-blur-xl border-b border-white/5" 
+            : "py-6 bg-transparent"
         }`}
       >
-        <div className="container mx-auto px-2 flex items-center justify-between">
-          <motion.a
-            href="/"
-            className="font-heading text-2xl font-bold gradient-text"
-            whileHover={{ scale: 1.05 }}
-          >
-            {/* <img
-              src={aarohanLogo}
-              alt="AAROHAN logo"
-              className="h-16 w-32 object-contain"
-            /> */}
-            AAROHAN
-          </motion.a>
+        <div className="container mx-auto px-6 flex items-center justify-between">
+          {/* Logo */}
+          {/* Logo Section */}
+<motion.a
+  href="/"
+  className="relative flex items-center justify-center"
+  whileHover={{ scale: 1.02 }}
+>
+  <img
+    src={aarohanLogo}
+    alt="AAROHAN 1.0 Logo"
+    className="h-10 md:h-12 w-auto object-contain brightness-110 contrast-125"
+    // The classes above ensure your logo stays sharp and fits the header height
+  />
+</motion.a>
 
-          {/* Desktop */}
-          <div className="hidden lg:flex items-center gap-6">
-            {navLinks.map((link) => {
-              const key = link.href.replace("#", "").replace("/", "");
-              const isActive = activeSection === key;
-
-              return (
-                <motion.button
-                  key={link.name}
-                  onClick={() => handleNavigation(link.href)}
-                  className={`text-sm font-medium relative transition-colors ${
-                    isActive
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                  whileHover={{ y: -2 }}
-                >
-                  {link.name}
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeSection"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                    />
-                  )}
-                </motion.button>
-              );
-            })}
-
-            <motion.a
-              href={eventLink}
-              className="btn-primary text-sm px-6 py-2.5"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              target="_blank"
-            >
-              Register Now
-            </motion.a>
-          </div>
-
-          {/* Mobile Toggle */}
-          <motion.button
-            className="lg:hidden p-2"
-            onClick={() => setIsMobileMenuOpen((p) => !p)}
-            whileTap={{ scale: 0.9 }}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </motion.button>
-        </div>
-      </motion.nav>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "spring", damping: 25 }}
-            className="fixed inset-y-0 right-0 w-full sm:w-80 z-40 glass-card pt-20"
-          >
-            <div className="flex flex-col p-6 gap-4">
-              {navLinks.map((link, index) => {
+          {/* Desktop Links */}
+          <div className="hidden lg:flex items-center gap-8">
+            <div className="flex items-center gap-8 px-8 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-md">
+              {navLinks.map((link) => {
                 const key = link.href.replace("#", "").replace("/", "");
                 const isActive = activeSection === key;
 
                 return (
-                  <motion.button
+                  <button
                     key={link.name}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
                     onClick={() => handleNavigation(link.href)}
-                    className={`text-left py-3 px-4 rounded-lg font-medium ${
-                      isActive
-                        ? "bg-primary/20 text-primary"
-                        : "hover:bg-muted"
+                    className={`text-xs font-bold uppercase tracking-widest transition-all duration-300 relative ${
+                      isActive ? "text-[#008d76]" : "text-gray-400 hover:text-white"
                     }`}
                   >
                     {link.name}
-                  </motion.button>
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeTab"
+                        className="absolute -bottom-1 left-0 right-0 h-px bg-[#008d76]"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </button>
                 );
               })}
+            </div>
 
+            <motion.a
+              href={eventLink}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              target="_blank"
+              className="bg-[#008d76] text-white text-[10px] font-black uppercase tracking-[0.2em] px-6 py-3 rounded-xl shadow-[0_0_20px_rgba(0,141,118,0.3)] flex items-center gap-2"
+            >
+              Register Now <ExternalLink size={14} />
+            </motion.a>
+          </div>
+
+          {/* Mobile Toggle */}
+          <button
+            className="lg:hidden text-white p-2 bg-white/5 rounded-lg border border-white/10"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+      </motion.nav>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(20px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            className="fixed inset-0 z-[55] bg-[#030712]/90 lg:hidden flex flex-col items-center justify-center p-6"
+          >
+            <div className="flex flex-col gap-6 w-full max-w-sm text-center">
+              {navLinks.map((link, index) => (
+                <motion.button
+                  key={link.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  onClick={() => handleNavigation(link.href)}
+                  className="text-2xl font-black tracking-tighter text-white hover:text-[#008d76] uppercase transition-colors"
+                >
+                  {link.name}
+                </motion.button>
+              ))}
               <motion.a
                 href={eventLink}
-                className="btn-primary text-center mt-4"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                target="_blank"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="mt-8 bg-[#008d76] text-white font-black py-4 rounded-2xl uppercase tracking-widest shadow-[0_0_30px_rgba(0,141,118,0.4)]"
               >
                 Register Now
               </motion.a>
             </div>
           </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Overlay */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            className="fixed inset-0 bg-background/80 backdrop-blur-sm z-30 lg:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsMobileMenuOpen(false)}
-          />
         )}
       </AnimatePresence>
     </>

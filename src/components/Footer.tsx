@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Twitter, Linkedin, Instagram, Heart } from "lucide-react";
+import { Github, Twitter, Linkedin, Instagram, Mail, Phone } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -19,66 +19,97 @@ const Footer = () => {
     { name: "Contact", href: "#contact" },
   ];
 
+  const contacts = [
+    { name: "Fardeen Desai", email: "far.des.rt23@dypatil.edu", phone: "+91 9372794144" },
+    { name: "Rachana Bera", email: "rac.ber.rt23@dypatil.edu", phone: "+91 7021259090" },
+  ];
+
   return (
-    <footer className="relative border-t border-border/50">
-      <div className="absolute inset-0 gradient-bg opacity-20" />
-      
-      <div className="container mx-auto px-4 py-12 relative z-10">
-        <div className="grid md:grid-cols-3 gap-8 items-center">
-          {/* Logo & Description */}
-          <div>
+    <footer className="bg-[#030712] relative pt-20 pb-10 overflow-hidden border-t border-white/5">
+      {/* Subtle Background Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-[#008d76]/50 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-24 bg-[#008d76]/10 blur-[80px] rounded-full pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+          
+          {/* Brand Column */}
+          <div className="md:col-span-4">
             <motion.a
               href="#"
-              className="font-heading text-2xl font-bold gradient-text inline-block mb-4"
-              whileHover={{ scale: 1.05 }}
+              className="text-2xl font-black tracking-tighter text-white inline-block mb-6"
+              whileHover={{ scale: 1.02 }}
             >
-              AAROHAN
+              AAROHAN <span className="text-[#008d76]">1.0</span>
             </motion.a>
-            <p className="text-muted-foreground text-sm max-w-xs">
-              Code The Future - Where innovation meets collaboration. Join us
-              for 24 hours of intense coding and creativity.
+            <p className="text-gray-400 text-sm leading-relaxed max-w-sm mb-8">
+              Join hundreds of developers for 24 hours of intense creativity and problem-solving.
             </p>
+            
+            <div className="flex gap-3">
+              {socialLinks.map((social) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  whileHover={{ scale: 1.1, backgroundColor: "rgba(0, 141, 118, 0.15)", borderColor: "rgba(0, 141, 118, 0.5)" }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#008d76] transition-all duration-300"
+                >
+                  <social.icon size={18} />
+                </motion.a>
+              ))}
+            </div>
           </div>
 
           {/* Quick Links */}
-          <div className="flex flex-wrap justify-center gap-4">
-            {footerLinks.map((link) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                whileHover={{ y: -2 }}
-                className="text-muted-foreground hover:text-primary transition-colors text-sm"
-              >
-                {link.name}
-              </motion.a>
-            ))}
+          <div className="md:col-span-2">
+            <h4 className="text-white font-bold tracking-widest text-[10px] uppercase mb-6">Navigation</h4>
+            <div className="flex flex-col gap-4">
+              {footerLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-gray-500 hover:text-[#008d76] transition-colors text-sm font-medium w-fit"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
           </div>
 
-          {/* Social Links */}
-          <div className="flex justify-center md:justify-end gap-3">
-            {socialLinks.map((social) => (
-              <motion.a
-                key={social.label}
-                href={social.href}
-                aria-label={social.label}
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-muted-foreground hover:text-primary hover:neon-glow transition-all"
-              >
-                <social.icon size={18} />
-              </motion.a>
-            ))}
+          {/* Contact Info */}
+          <div className="md:col-span-6">
+            <h4 className="text-white font-bold tracking-widest text-[10px] uppercase mb-6">Contact the Organizers</h4>
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <p className="text-[#008d76] text-xs font-bold uppercase tracking-wider">Official</p>
+                <a href="mailto:csi-rait-official@rait.ac.in" className="text-gray-400 hover:text-white transition-colors text-sm block truncate">
+                  csi-rait-official@rait.ac.in
+                </a>
+              </div>
+              
+              {contacts.map((contact) => (
+                <div key={contact.name} className="space-y-1">
+                  <p className="text-white text-sm font-semibold">{contact.name}</p>
+                  <div className="flex flex-col gap-1">
+                    <a href={`mailto:${contact.email}`} className="text-gray-500 hover:text-[#008d76] text-xs flex items-center gap-2">
+                      <Mail size={12} /> {contact.email}
+                    </a>
+                    <a href={`tel:${contact.phone.replace(/\s/g, '')}`} className="text-gray-500 hover:text-[#008d76] text-xs flex items-center gap-2">
+                      <Phone size={12} /> {contact.phone}
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-border/30 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-muted-foreground text-sm text-center sm:text-left">
-            © {currentYear} AAROHAN. All rights reserved.
-          </p>
-          <p className="text-muted-foreground text-sm flex items-center gap-1">
-            Made with <Heart className="w-4 h-4 text-primary fill-primary" /> by
-            the organizing team
+        {/* Bottom Bar - Centered Credits */}
+        <div className="pt-8 border-t border-white/5 flex flex-col items-center">
+          <p className="text-gray-500 text-[11px] font-bold tracking-[0.2em] uppercase text-center">
+            © {currentYear} <span className="text-white">CSI-RAIT</span>. All Rights Reserved.
           </p>
         </div>
       </div>
